@@ -9,6 +9,7 @@ public class Main {
         Item[] store = setUpStore();
         ArrayList<Item> cart = createCart(store, args);
         printReceiptInOrder(cart);
+        emptyCartReverseOrder(cart);
     }
 
     public static Item[] setUpStore() {
@@ -52,5 +53,12 @@ public class Main {
                 (b) Sales Tax: 5%%
                 (c) Total: %.2f
                 """, subtotal, total);
+    }
+    public static void emptyCartReverseOrder(ArrayList<Item> cart) {
+        System.out.println("\nRemoving all items from the cart in backwards order...");
+        for(int i = cart.size() - 1; i >= 0; i--) {
+            System.out.println("Removing: " + cart.get(i).getItemName());
+        }
+        System.out.println("The cart has been emptied.");
     }
 }
