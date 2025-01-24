@@ -1,7 +1,20 @@
-//TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
-// click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
+// Catherine Neely
+// CSC 112
+// 01.24.25
+
+import java.util.*;
+
 public class Main {
     public static void main(String[] args) {
-        System.out.println("fix me!");
+
+    }
+    public static Item[] setUpStore() {
+        Item[] store = new Item[5];
+        store[0] = new Item("Vanilla Ice Cream", 6.0);
+        store[1] = new Item("Chocolate Ice Cream", 3.0);
+        store[2] = new Item("Cookie Ice Cream", 4.0);
+        store[3] = new Item("Chocolate Chip Ice Cream", 3.0);
+        store[4] = new Item("Strawberry Ice Cream", 2.5);
+        return store;
     }
 }
