@@ -29,12 +29,27 @@ public class Main {
         int[] items = new int[numberOfItems];
         // This loop fills the "items" array with the arguments from terminal.
         for (int i = 0; i < numberOfItems; i++) {
+            // This try/catch checks if the user entered a number out of bounds.
+            try {
                 items[i] = Integer.parseInt(args[i + 1]);
+            } catch (ArrayIndexOutOfBoundsException e) {
+                System.out.println("Invalid item number.");
+            }
         }
         ArrayList<Item> cart = new ArrayList<>();
         // This loop adds the items to the "cart" ArrayList.
         for (int i = 0; i < items.length; i++) {
-            cart.add(store[items[i]]);
+            // This try/catch checks if the user entered a number out of bounds before adding
+            // items from the store to the cart.
+            try {
+                if (items[i] >= 0 && items[i] < store.length) {
+                    cart.add(store[items[i]]);
+                } else {
+                    System.out.println("Invalid item number.");
+                }
+            } catch (ArrayIndexOutOfBoundsException e) {
+                System.out.println("Invalid item number.");
+            }
         }
         return cart;
     }
