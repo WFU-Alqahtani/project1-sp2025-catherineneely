@@ -21,9 +21,9 @@ public class Main {
         store[4] = new Item("Strawberry Ice Cream    ", 3.0);
         return store;
     }
-    // The creatCart method creates the user's cart from the arguments input in the terminal, with
-    // the first number being the total number of items and the following numbers corresponding
-    // to the flavors.
+    // The creatCart method creates the user's cart from the arguments input in the terminal,
+    // with the first number being the total number of items and the following numbers
+    // corresponding to the flavors.
     public static ArrayList<Item> createCart(Item[] store, String[] args) {
         int numberOfItems = Integer.parseInt(args[0]);
         int[] items = new int[numberOfItems];
@@ -33,7 +33,8 @@ public class Main {
             try {
                 items[i] = Integer.parseInt(args[i + 1]);
             } catch (ArrayIndexOutOfBoundsException e) {
-                System.out.println("Invalid item number.");
+                System.out.println("Invalid item number. The store does not have item "
+                        + items[i] + ".");
             }
         }
         ArrayList<Item> cart = new ArrayList<>();
@@ -45,16 +46,19 @@ public class Main {
                 if (items[i] >= 0 && items[i] < store.length) {
                     cart.add(store[items[i]]);
                 } else {
-                    System.out.println("Invalid item number.");
+                    System.out.println("Invalid item number. The store does not have item "
+                            + items[i] + ".");
                 }
             } catch (ArrayIndexOutOfBoundsException e) {
-                System.out.println("Invalid item number.");
+                System.out.println("Invalid item number. The store does not have item "
+                        + items[i] + ".");
             }
         }
         return cart;
     }
     // The printReceiptInOrder method prints the items in the user's cart and their price.
     // It then calculates and prints the subtotal, tax, and total cost.
+    // The Big O running time for this method is O(N).
     public static void printReceiptInOrder(ArrayList<Item> cart) {
         System.out.println("""
                 Receipt
@@ -78,6 +82,7 @@ public class Main {
     }
     // The emptyCartReverseOrder method empties the user's cart by removing the items in the
     // backwards order they were put into the cart.
+    // The Big O running time for this method is O(N).
     public static void emptyCartReverseOrder(ArrayList<Item> cart) {
         System.out.println("\nRemoving all items from the cart in backwards order...");
         for(int i = cart.size() - 1; i >= 0; i--) {
