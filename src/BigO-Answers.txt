@@ -1,0 +1,7 @@
+// Catherine Neely
+// CSC 112
+// 01.29.25
+
+The Big O running time for the printReceiptInOrder method is O(N).
+The Big O running time for the emptyCartReverseOrder method is O(N).
+
