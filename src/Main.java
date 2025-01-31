@@ -32,7 +32,7 @@ public class Main {
         int[] items = new int[args.length];
         // This loop fills the "items" array with the arguments from terminal.
         for (int i = 0; i < args.length; i++) {
-            // This try/catch checks if the user entered a number out of bounds.
+            // This try/catch checks if the user entered something other than a number.
             try {
                 items[i] = Integer.parseInt(args[i]);
         } catch (NumberFormatException e) {
