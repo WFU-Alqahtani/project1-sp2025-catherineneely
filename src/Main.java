@@ -25,16 +25,17 @@ public class Main {
     // with the first number being the total number of items and the following numbers
     // corresponding to the flavors.
     public static ArrayList<Item> createCart(Item[] store, String[] args) {
-        int numberOfItems = Integer.parseInt(args[0]);
-        int[] items = new int[numberOfItems];
+        int[] items = new int[args.length];
         // This loop fills the "items" array with the arguments from terminal.
-        for (int i = 0; i < numberOfItems; i++) {
+        for (int i = 0; i < args.length; i++) {
             // This try/catch checks if the user entered a number out of bounds.
             try {
-                items[i] = Integer.parseInt(args[i + 1]);
+                items[i] = Integer.parseInt(args[i]);
             } catch (ArrayIndexOutOfBoundsException e) {
                 System.out.println("Invalid item number. The store does not have item "
                         + items[i] + ".");
+            } catch (NumberFormatException e) {
+                System.out.println("Invalid input " + args[i] + ".");
             }
         }
         ArrayList<Item> cart = new ArrayList<>();
@@ -43,7 +44,7 @@ public class Main {
             // This try/catch checks if the user entered a number out of bounds before adding
             // items from the store to the cart.
             try {
-                if (items[i] >= 0 && items[i] < store.length) {
+                if (items[i] >= 0 && items[i] < (store.length)) {
                     cart.add(store[items[i]]);
                 } else {
                     System.out.println("Invalid item number. The store does not have item "
@@ -52,6 +53,8 @@ public class Main {
             } catch (ArrayIndexOutOfBoundsException e) {
                 System.out.println("Invalid item number. The store does not have item "
                         + items[i] + ".");
+            } catch (NumberFormatException e) {
+                System.out.println("Invalid input " + args[i] + ".");
             }
         }
         return cart;
