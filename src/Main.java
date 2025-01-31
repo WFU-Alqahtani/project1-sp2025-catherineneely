@@ -8,8 +8,12 @@ public class Main {
     public static void main(String[] args) {
         Item[] store = setUpStore();
         ArrayList<Item> cart = createCart(store, args);
-        printReceiptInOrder(cart);
-        emptyCartReverseOrder(cart);
+        if (!cart.isEmpty()) {
+            printReceiptInOrder(cart);
+            emptyCartReverseOrder(cart);
+        } else {
+            System.out.println("No valid items found.");
+        }
     }
     // The setUpStore method sets up the ice cream flavors in the store using the Item object.
     public static Item[] setUpStore() {
@@ -31,30 +35,20 @@ public class Main {
             // This try/catch checks if the user entered a number out of bounds.
             try {
                 items[i] = Integer.parseInt(args[i]);
-            } catch (ArrayIndexOutOfBoundsException e) {
-                System.out.println("Invalid item number. The store does not have item "
-                        + items[i] + ".");
-            } catch (NumberFormatException e) {
+        } catch (NumberFormatException e) {
                 System.out.println("Invalid input " + args[i] + ".");
+                items[i] = -1;
             }
         }
         ArrayList<Item> cart = new ArrayList<>();
         // This loop adds the items to the "cart" ArrayList.
         for (int i = 0; i < items.length; i++) {
-            // This try/catch checks if the user entered a number out of bounds before adding
-            // items from the store to the cart.
-            try {
-                if (items[i] >= 0 && items[i] < (store.length)) {
-                    cart.add(store[items[i]]);
-                } else {
-                    System.out.println("Invalid item number. The store does not have item "
-                            + items[i] + ".");
-                }
-            } catch (ArrayIndexOutOfBoundsException e) {
+            if (items[i] >= 0 && items[i] < (store.length)) {
+                cart.add(store[items[i]]);
+            } else if (items[i] == -1) {
+            } else {
                 System.out.println("Invalid item number. The store does not have item "
                         + items[i] + ".");
-            } catch (NumberFormatException e) {
-                System.out.println("Invalid input " + args[i] + ".");
             }
         }
         return cart;
