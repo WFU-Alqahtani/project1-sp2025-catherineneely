@@ -36,7 +36,7 @@ public class Main {
             try {
                 items[i] = Integer.parseInt(args[i]);
         } catch (NumberFormatException e) {
-                System.out.println("Invalid input " + args[i] + ".");
+                System.out.println("Invalid input '" + args[i] + "'.");
                 items[i] = -1;
             }
         }
